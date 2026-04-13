@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>إلى شروق 💙</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  text-align:center;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  overflow:hidden;
+}
+
+h1{
+  margin-top:30px;
+  font-size:45px;
+}
+
+/* الصورة */
+.photo{
+  width:220px;
+  border-radius:20px;
+  margin-top:15px;
+  box-shadow:0 0 25px rgba(0,0,0,0.4);
+  animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+
+/* صندوق */
+.box{
+  margin:20px auto;
+  width:80%;
+  background: rgba(255,255,255,0.15);
+  padding:20px;
+  border-radius:20px;
+  backdrop-filter: blur(10px);
+}
+
+/* زر */
+button{
+  padding:12px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#764ba2;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+/* قلوب */
+.heart{
+  position:absolute;
+  animation: rise 4s linear;
+}
+
+@keyframes rise{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-300px);opacity:0;}
+}
+
+/* كتابة */
+.timer{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:bold;
+  min-height:30px;
+}
+
+/* رسالة */
+.hidden{
+  display:none;
+  margin-top:20px;
+  font-size:22px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>إلى شروق 💙</h1>
+
+<img src="photo.jpg" class="photo">
+
+<div class="timer" id="time"></div>
+
+<div class="box">
+<p>شروق…</p>
+<p>يمكن هذي أغرب طريقة نعتذر بيها…</p>
+<p>بس حبيت تبانلك قدّاش يهمني الأمر 💔</p>
+
+<p>غلطت… ونعرف بلي غلطت</p>
+<p>وما عندي حتى عذر… غير أني نحب نصلّح</p>
+
+<p>نعرفك من 13 سنة… وعمري ما حبيت نخسرك 💙</p>
+</div>
+
+<button onclick="start()">اضغطي هنا 💫</button>
+
+<div class="hidden" id="secret">
+💙 سامحيني… ما نحبش نخسرك 💙  
+<br><br>
+أنتِ أغلى صديقة عندي 🌸
+</div>
+
+<audio id="music">
+<source src="https://cdn.pixabay.com/download/audio/2022/02/10/audio_38be21a2f4.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// تأثير كتابة
+let text = "هذي الصورة تذكرني بقدّاش كنتي دايماً معايا 💙";
+let i = 0;
+
+function typing(){
+  if(i < text.length){
+    document.getElementById("time").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing,50);
+  }
+}
+
+typing();
+
+// زر
+function start(){
+  document.getElementById("secret").style.display="block";
+  document.getElementById("music").play();
+
+  for(let i=0;i<30;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💙";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.top="80%";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),4000);
+  }
+}
+
+</script>
+
+</body>
+</html>
